@@ -10,9 +10,9 @@
         <h1>Timeline</h1>
         <div id="topRow">
             <div class="item">
-                <img alt="Project Image" src="./img/shehulk.png" width="150">
-                <div class="verticalLine"></div>
-                <div class="projectDate">Date</div>
+                <img class="projectImg" alt="Project Image" src="./img/shehulk.png" width="150">
+                <div class="projectLine"></div>
+                <div class="projectDate">August 2022</div>
             </div>
             <div class="item">Movie3</div>
             <div class="item">Movie5</div>
@@ -40,7 +40,7 @@
 
         #topRow {
             display: flex;
-            height: 10em;
+            height: 15em;
             margin-bottom: 1em;
         }
         #lineRow {
@@ -54,7 +54,7 @@
         }
         #bottomRow {
             display: flex;
-            height: 10em;
+            height: 15em;
             float: left;
             margin-top: 1em;
         }
@@ -66,6 +66,8 @@
             border-radius: 0.3em;
             background-color: white;
             margin: auto;
+            margin-left: 0;
+            margin-right: 0;
         }
         .year {
             float: left;
@@ -79,8 +81,8 @@
         }
 
         .item {
-            width: 10em;
-            height: 10em;
+            width: 20em;
+            height: 15em;
             float: left;
             text-align: center;
             border-style: dashed;
@@ -88,16 +90,23 @@
             /* display: flex; */
         }
 
-        .verticalLine {
-            width: 1em;
+        .projectImg {
+            margin-top: 1em;
+        }
+
+        .projectLine {
+            width: 0.2em;
             height: 5em;
-            align-items: center;
-            /* display: flex; */
+            margin: auto;
+            margin-top: 0.8em;
+            margin-bottom: 0.8em;
             background-color: white;
         }
         
         .projectDate {
-
+            margin-top: 1em;
+            font-size: 1.2em;
+            font-weight: bold;
         }
     </style>
 
