@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="timeline">
+        <h1>Timeline</h1>
+        <div id="topRow">
+            <div class="item">
+                <img alt="Project Image" src="./img/shehulk.png" width="150">
+                <div class="verticalLine"></div>
+                <div class="projectDate">Date</div>
+            </div>
+            <div class="item">Movie3</div>
+            <div class="item">Movie5</div>
+        </div>
+        <div id="lineRow">
+            <div class="line"></div>
+            <div class="year">2024</div>
+            <div class="line"></div>
+            <div class="year">2025</div>
+        </div>
+        <div id="bottomRow">
+            <div class="item">Movie2</div>
+            <div class="item">Movie4</div>
+            <div class="item">Movie6</div>
+
+        </div>
+    </div>
+
+    <style>
+        #timeline {
+            background-color: rgb(0, 0, 0);
+            color: white;
+            height: 100vh;
+        }
+
+        #topRow {
+            display: flex;
+            height: 10em;
+            margin-bottom: 1em;
+        }
+        #lineRow {
+            height: 5em;
+            /* width: 100vh; */
+            align-self: center;
+            
+            display: flex;
+            line-height: 5em;
+            justify-items: center;
+        }
+        #bottomRow {
+            display: flex;
+            height: 10em;
+            float: left;
+            margin-top: 1em;
+        }
+
+        .line {
+            float: left;
+            width: 25em; /* Dynamic based on items per year */
+            height: 0.2em;
+            border-radius: 0.3em;
+            background-color: white;
+            margin: auto;
+        }
+        .year {
+            float: left;
+            width: 10em;
+            text-align: center;
+            font-size: 2.5em;
+            /* background-color: aquamarine; */
+            /* justify-content: center;
+            align-content: center;
+            align-items: center; */
+        }
+
+        .item {
+            width: 10em;
+            height: 10em;
+            float: left;
+            text-align: center;
+            border-style: dashed;
+            border-color: red;
+            /* display: flex; */
+        }
+
+        .verticalLine {
+            width: 1em;
+            height: 5em;
+            align-items: center;
+            /* display: flex; */
+            background-color: white;
+        }
+        
+        .projectDate {
+
+        }
+    </style>
+
+    <script>
+
+    </script>
+</body>
+</html>
