@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
 <body>
     <div id="timeline">
         <!-- <h1>Timeline</h1> -->
         <div id="topRow">
-            <div class="item">
+            <!-- <div class="item">
                 <img class="projectImg" alt="Project Image" src="./img/shehulk.png" width="250">
                 <div class="projectLine"></div>
                 <div class="projectDate">August 2022</div>
-            </div>
+            </div> -->
         </div>
         <div id="lineRow">
             <!-- <div class="line"></div>
@@ -27,186 +28,6 @@
         </div>
     </div>
 
-    <style>
-        body {
-            margin: 0;
-        }
-
-        body::after {
-            content: "";
-            /* background-image: url(img/background.jpeg); */
-            background-image: url(img/background2.svg);
-            background-size: 100%;
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            height: 100vh; 
-            width: 100vw; 
-            z-index: -1; 
-            filter: blur(2px);
-        }
-
-        #timeline {
-            /* background-color: rgb(0, 0, 0); */
-            
-            color: white;
-            height: 100vh;
-        }
-
-        #topRow {
-            display: flex;
-            height: 20em;
-            margin-bottom: 1em;
-        }
-        #lineRow {
-            height: 6em;
-            /* width: 100vh; */
-            align-self: center;
-            
-            display: flex;
-            line-height: 6em;
-            justify-items: center;
-        }
-        #bottomRow {
-            display: flex;
-            height: 20em;
-            float: left;
-            margin-top: 1em;
-        }
-
-        .line {
-            float: left;
-            width: 25em; /* Dynamic based on items per year */
-            height: 0.2em;
-            border-radius: 0.3em;
-            background-color: white;
-            margin: auto;
-            margin-left: 0;
-            margin-right: 0;
-        }
-        .year {
-            float: left;
-            width: 10em;
-            text-align: center;
-            font-size: 3em;
-        }
-
-        .item {
-            width: 20em;
-            height: 20em;
-            float: left;
-            text-align: center;
-            border-style: dashed;
-            border-color: red;
-            /* display: flex; */
-        }
-
-        .projectImg {
-            margin-top: 1em;
-        }
-
-        .projectLine {
-            width: 0.2em;
-            height: 7em;
-            margin: auto;
-            margin-top: 0.5em;
-            margin-bottom: 0.5em;
-            background-color: white;
-        }
-        
-        .projectDate {
-            font-size: 2em;
-            font-weight: bold;
-        }
-    </style>
-
-    <script>
-
-        var years = new Set();
-
-        async function createItem(imgUri, date)
-        {
-            // console.log(imgUri);
-            let div = document.createElement("div");
-            div.className = "item";
-
-            // Fetch image
-            let response = await fetch(imgUri);
-            let imageBlob = await response.blob()
-            let imageObjectURL = URL.createObjectURL(imageBlob);
-
-            let img = document.createElement("img");
-            img.className = "projectImg";
-            // img.src = "./img/shehulk.png";
-            img.src = imageObjectURL;
-            // img.width = "250";
-            img.width = "200";
-            img.height = "100";
-
-            div.appendChild(img);
-
-            let line = document.createElement("div");
-            line.className = "projectLine";
-
-            div.appendChild(line);
-
-            let dateDiv = document.createElement("div");
-            dateDiv.className = "projectDate";
-
-            let datetime = new Date(date);
-
-            // Lägg till år
-            years.add(datetime.getFullYear());
-
-            dateDiv.innerText = datetime.toLocaleString('en-us', { month: 'long' });
-
-            div.appendChild(dateDiv);
-
-            return div;
-        }
-
-        document.addEventListener('DOMContentLoaded', async (event) => {
-            console.log("loaded");
-
-            let apiUrl = "https://api.earth616.org/api/mcu";
-
-            let response = await fetch(apiUrl);
-
-            let json = await response.json();
-            console.log(json);
-
-            let phase1 = json.mcuTimeLine["Phase 1"];
-            console.log(phase1);
-
-            await Promise.all(phase1.map(async project => {
-                console.log(project);
-                // console.log(project.title);
-
-                let row = document.getElementById("topRow");
-
-                let div = await createItem(project.imdbcache.image, project.premiere);
-
-                row.appendChild(div);
-
-            }));
-
-            // Years
-            Array.from(years).sort().forEach(function (year) {
-                let lineRow = document.getElementById("lineRow");
-                console.log(year);
-
-                let lineDiv = document.createElement("div");
-                lineDiv.className = "line";
-
-                let yearDiv = document.createElement("div");
-                yearDiv.className = "year";
-                yearDiv.innerText = year;
-
-                lineRow.appendChild(lineDiv);
-                lineRow.appendChild(yearDiv);
-                lineRow.appendChild(lineDiv);
-            });
-        });
-    </script>
+    <script src="./script.js"></script>
 </body>
 </html>
