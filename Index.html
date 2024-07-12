@@ -16,10 +16,10 @@
             </div>
         </div>
         <div id="lineRow">
-            <div class="line"></div>
+            <!-- <div class="line"></div>
             <div class="year">2024</div>
             <div class="line"></div>
-            <div class="year">2025</div>
+            <div class="year">2025</div> -->
         </div>
         <div id="bottomRow">
             <div class="item">Movie2</div>
@@ -122,9 +122,11 @@
 
     <script>
 
+        var years = new Set();
+
         async function createItem(imgUri, date)
         {
-            console.log(imgUri);
+            // console.log(imgUri);
             let div = document.createElement("div");
             div.className = "item";
 
@@ -138,6 +140,7 @@
             // img.src = "./img/shehulk.png";
             img.src = imageObjectURL;
             // img.width = "250";
+            img.width = "200";
             img.height = "100";
 
             div.appendChild(img);
@@ -151,6 +154,9 @@
             dateDiv.className = "projectDate";
 
             let datetime = new Date(date);
+
+            // Lägg till år
+            years.add(datetime.getFullYear());
 
             dateDiv.innerText = datetime.toLocaleString('en-us', { month: 'long' });
 
@@ -172,9 +178,9 @@
             let phase1 = json.mcuTimeLine["Phase 1"];
             console.log(phase1);
 
-            phase1.forEach(async project => {
+            await Promise.all(phase1.map(async project => {
                 console.log(project);
-                console.log(project.title);
+                // console.log(project.title);
 
                 let row = document.getElementById("topRow");
 
@@ -182,8 +188,24 @@
 
                 row.appendChild(div);
 
-            });
+            }));
 
+            // Years
+            Array.from(years).sort().forEach(function (year) {
+                let lineRow = document.getElementById("lineRow");
+                console.log(year);
+
+                let lineDiv = document.createElement("div");
+                lineDiv.className = "line";
+
+                let yearDiv = document.createElement("div");
+                yearDiv.className = "year";
+                yearDiv.innerText = year;
+
+                lineRow.appendChild(lineDiv);
+                lineRow.appendChild(yearDiv);
+                lineRow.appendChild(lineDiv);
+            });
         });
     </script>
 </body>
