@@ -46,7 +46,8 @@ body::after {
 
 .line {
     float: left;
-    width: 25em; /* Dynamic based on items per year */
+    width: 4.5em; /* Dynamic based on items per year */
+    min-width: 4.5em;
     height: 0.2em;
     border-radius: 0.3em;
     background-color: white;
@@ -56,13 +57,17 @@ body::after {
 }
 .year {
     float: left;
-    width: 10em;
+    width: 6em;
     text-align: center;
     font-size: 3em;
+    /* min-width: 6em; */
+    /* min-width: 8em;
+    max-width: 8em; */
 }
 
 .item {
     width: 20em;
+    min-width: 20em;
     height: 20em;
     float: left;
     text-align: center;

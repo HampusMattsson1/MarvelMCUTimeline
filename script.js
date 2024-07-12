@@ -1,4 +1,7 @@
 var years = new Set();
+var yearWidth = {};
+
+var topRow = true;
 
 async function createItem(imgUri, date, title)
 {
@@ -33,10 +36,13 @@ async function createItem(imgUri, date, title)
     let datetime = new Date(date);
 
     // Lägg till år
-    years.add(datetime.getFullYear());
+    let year = datetime.getFullYear()
+    years.add(year);
+    yearWidth[year] = yearWidth[year] ? yearWidth[year] += 1 : 1;
+    // console.log(year, yearWidth[year]);
 
     // dateDiv.innerText = datetime.toLocaleString('en-us', { month: 'long' });
-    dateDiv.innerText = datetime.getFullYear();
+    dateDiv.innerText = datetime.toLocaleString('en-us', { month: 'short' }) + " " + year;
 
     div.appendChild(dateDiv);
 
@@ -49,12 +55,12 @@ async function addPhase(json)
     json.sort((a, b) => new Date(a.premiere) - new Date(b.premiere));
     // console.log("after sort", json);
 
+    let row1 = document.getElementById("topRow");
+    let row2 = document.getElementById("bottomRow");
+
     await Promise.all(json.map(async project => {
         // console.log(project);
         // console.log(project.title);
-
-        let row = document.getElementById("topRow");
-
         let imgUri = "";
 
         try {
@@ -65,7 +71,14 @@ async function addPhase(json)
         }
         let div = await createItem(imgUri, project.premiere, project.title);
 
-        row.appendChild(div);
+        if (topRow)
+        {
+            row1.appendChild(div);
+        } else {
+            row2.appendChild(div);
+        }
+
+        topRow = !topRow;
 
     }));
 }
@@ -88,9 +101,6 @@ document.addEventListener('DOMContentLoaded', async (event) => {
     // Years
     let lineRow = document.getElementById("lineRow");
 
-    let yearContainer = document.createElement("div");
-    yearContainer.className = "yearContainer";
-
     let lineDiv = document.createElement("div");
         lineDiv.className = "line";
 
@@ -98,12 +108,17 @@ document.addEventListener('DOMContentLoaded', async (event) => {
     yearDiv.className = "year";
 
     lineRow.appendChild(lineDiv);
+
+    // Years
     Array.from(years).sort().forEach(function (year) {
+        console.log(year);
+        console.log(yearWidth[year]);
         // lineRow.appendChild(lineDiv.cloneNode());
         let clonedYear = yearDiv.cloneNode();
         clonedYear.innerText = year;
 
         lineRow.appendChild(clonedYear);
+        lineRow.appendChild(lineDiv.cloneNode());
         lineRow.appendChild(lineDiv.cloneNode());
     });
 });
