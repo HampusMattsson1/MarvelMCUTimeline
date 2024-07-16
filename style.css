@@ -57,8 +57,9 @@ body::after {
 }
 .year {
     float: left;
-    width: 6em;
+    /* width: 6em; */
     text-align: center;
+    /* Riktiga bredden blir dubbelt så mycket som font-size */
     font-size: 3em;
     /* min-width: 6em; */
     /* min-width: 8em;

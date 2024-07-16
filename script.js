@@ -24,30 +24,40 @@ document.addEventListener('DOMContentLoaded', async (event) => {
     let lineRow = document.getElementById("lineRow");
 
     let lineDiv = document.createElement("div");
-        lineDiv.className = "line";
+    lineDiv.className = "line";
 
     let yearDiv = document.createElement("div");
     yearDiv.className = "year";
 
+    // Begin with a line
     lineRow.appendChild(lineDiv);
 
     // Years
     Array.from(years).sort().forEach(function (year) {
         // console.log(year);
         // console.log(yearWidth[year]);
-        console.log(year, yearWidth[year]);
+        // console.log(year, yearWidth[year]);
         let width = yearWidth[year] / 2;
-        console.log(width);
+        // console.log(width);
+        console.log(year, width);
         // lineRow.appendChild(lineDiv.cloneNode());
+
+        let wrapDiv = document.createElement("div");
+        // wrapDiv.style.display = "contents";
+        wrapDiv.style.display = "grid";
+        wrapDiv.style.gridAutoFlow = "column";
+
         let clonedYear = yearDiv.cloneNode();
         clonedYear.innerText = year;
 
-        lineRow.appendChild(clonedYear);
+        wrapDiv.appendChild(clonedYear);
 
         for (let i = 0; i < width; i++)
         {
-            lineRow.appendChild(lineDiv.cloneNode());
-            lineRow.appendChild(lineDiv.cloneNode());
+            wrapDiv.appendChild(lineDiv.cloneNode());
+            wrapDiv.appendChild(lineDiv.cloneNode());
         }
+
+        lineRow.appendChild(wrapDiv);
     });
 });
