@@ -49,12 +49,12 @@ body::after {
     /* width: 4.5em; Dynamic based on items per year */
     width: 7em; /* Dynamic based on items per year */
     min-width: 4.5em;
-    height: 0.2em;
+    height: 0.1em;
     border-radius: 0.3em;
     background-color: white;
     margin: auto;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
 }
 .year {
     float: left;
