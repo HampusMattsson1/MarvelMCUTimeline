@@ -89,6 +89,7 @@ body::after {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     background-color: white;
+    border-radius: 10%;
 }
 
 .projectDate {
