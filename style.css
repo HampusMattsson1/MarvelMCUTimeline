@@ -46,7 +46,8 @@ body::after {
 
 .line {
     float: left;
-    width: 4.5em; /* Dynamic based on items per year */
+    /* width: 4.5em; Dynamic based on items per year */
+    width: 7em; /* Dynamic based on items per year */
     min-width: 4.5em;
     height: 0.2em;
     border-radius: 0.3em;

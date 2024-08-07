@@ -5,11 +5,13 @@ document.addEventListener('DOMContentLoaded', async (event) => {
     console.log("loaded");
 
     let apiUrl = "https://api.earth616.org/api/mcu";
+    // let apiUrl = "http://localhost:5021/timeline";
 
     let response = await fetch(apiUrl);
+    console.log(response);
 
     let json = await response.json();
-    // console.log(json);
+    console.log(json);
 
     let projects = new Array();
     projects.push(...json.mcuTimeLine["Phase 1"]);
@@ -30,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
     yearDiv.className = "year";
 
     // Begin with a line
-    lineRow.appendChild(lineDiv);
+    // lineRow.appendChild(lineDiv);
 
     // Years
     Array.from(years).sort().forEach(function (year) {
@@ -50,12 +52,14 @@ document.addEventListener('DOMContentLoaded', async (event) => {
         let clonedYear = yearDiv.cloneNode();
         clonedYear.innerText = year;
 
+        wrapDiv.appendChild(lineDiv.cloneNode());
+
         wrapDiv.appendChild(clonedYear);
 
         for (let i = 0; i < width; i++)
         {
             wrapDiv.appendChild(lineDiv.cloneNode());
-            wrapDiv.appendChild(lineDiv.cloneNode());
+            // wrapDiv.appendChild(lineDiv.cloneNode());
         }
 
         lineRow.appendChild(wrapDiv);

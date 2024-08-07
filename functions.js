@@ -47,7 +47,7 @@ async function createItem(imgUri, date, title)
 
     let img = document.createElement("img");
     img.className = "projectImg";
-    // img.src = "./img/shehulk.png";
+    img.src = "./img/shehulk.png";
     // img.src = imageObjectURL;
     // img.width = "250";
     img.width = "200";
