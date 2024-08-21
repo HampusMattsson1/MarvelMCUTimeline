@@ -2,6 +2,17 @@
 
 <h1>Timeline</h1>
 
+<div id="timeline">
+    <div id="topRow"></div>
+
+    <div id="lineRow">
+		@* Lines *@
+		<div style="display: grid; grid-auto-flow: column;"><div class="line"></div><div class="year">2008</div><div class="line"></div></div>
+	</div>
+
+    <div id="bottomRow"></div>
+</div>
+
 @{
 	foreach(var obj in Model)
 	{

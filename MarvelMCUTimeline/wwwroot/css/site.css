@@ -19,4 +19,91 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: black;
+}
+
+
+
+/* Eget */
+#timeline {
+    /* background-color: rgb(0, 0, 0); */
+    overflow: auto;
+    color: white;
+    height: 100vh;
+}
+
+#topRow {
+    display: flex;
+    height: 20em;
+    margin-bottom: 1em;
+}
+
+#lineRow {
+    height: 6em;
+    /* width: 100vh; */
+    align-self: center;
+    display: flex;
+    line-height: 6em;
+    justify-items: center;
+}
+
+#bottomRow {
+    display: flex;
+    height: 20em;
+    float: left;
+    margin-top: 1em;
+}
+
+.line {
+    float: left;
+    /* width: 4.5em; Dynamic based on items per year */
+    width: 7em; /* Dynamic based on items per year */
+    min-width: 4.5em;
+    height: 0.1em;
+    border-radius: 0.3em;
+    background-color: white;
+    margin: auto;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+}
+
+.year {
+    float: left;
+    /* width: 6em; */
+    text-align: center;
+    /* Riktiga bredden blir dubbelt så mycket som font-size */
+    font-size: 3em;
+    /* min-width: 6em; */
+    /* min-width: 8em;
+    max-width: 8em; */
+}
+
+.item {
+    width: 20em;
+    min-width: 20em;
+    height: 20em;
+    float: left;
+    text-align: center;
+    border-style: dashed;
+    border-color: red;
+    /* display: flex; */
+}
+
+.projectImg {
+    margin-top: 1em;
+}
+
+.projectLine {
+    width: 0.2em;
+    height: 7em;
+    margin: auto;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    background-color: white;
+    border-radius: 10%;
+}
+
+.projectDate {
+    font-size: 2em;
+    font-weight: bold;
 }
