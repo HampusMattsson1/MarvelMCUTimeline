@@ -1,6 +1,9 @@
 using MarvelMCUTimeline.Models;
+using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Text.Json;
+using System;
 
 namespace MarvelMCUTimeline.Controllers
 {
@@ -16,6 +19,16 @@ namespace MarvelMCUTimeline.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [Route("/timeline")]
+        public async Task<IActionResult> Timeline()
+        {
+            string jsonString = await System.IO.File.ReadAllTextAsync("Data.json");
+
+            var model = JsonSerializer.Deserialize<List<TimelineObject>>(jsonString);
+
+            return View(model);
         }
 
         public IActionResult Privacy()

@@ -1,0 +1,10 @@
+﻿@model List<MarvelMCUTimeline.Models.TimelineObject>;
+
+<h1>Timeline</h1>
+
+@{
+	foreach(var obj in Model)
+	{
+		<h5>@obj.Name</h5>
+	}
+}
