@@ -67,6 +67,8 @@ async function addPhase(json)
 
         if (counter % 2 == 0)
         {
+            div.style.alignContent = "end";
+
             div.appendChild(img);
             div.appendChild(line);
             div.appendChild(dateDiv);
